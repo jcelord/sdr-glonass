@@ -1,4 +1,4 @@
-PCBNEW-LibModule-V1  Ср. 04 марта 2015 15:34:32
+PCBNEW-LibModule-V1  Чт. 05 марта 2015 20:05:36
 # encoding utf-8
 Units mm
 $INDEX
@@ -11,6 +11,7 @@ SIP_2_100_70
 SIP_3_100_70
 SMA10137002
 SMA_EDGE_KHD19A
+mountinghole
 $EndINDEX
 $MODULE CONN_USB_B
 Po 0 0 0 15 54F6FBCB 00000000 ~~
@@ -491,4 +492,20 @@ Ne 0 ""
 Po 0 2.4511
 $EndPAD
 $EndMODULE SMA_EDGE_KHD19A
+$MODULE mountinghole
+Po 0 0 0 15 54F88CDC 00000000 ~~
+Li mountinghole
+Sc 0
+AR 
+Op 0 0 0
+T0 0 0 1.524 1.524 0 0.3048 N V 21 N "mountinghole"
+T1 0 0 1.524 1.524 0 0.3048 N V 21 N "VAL**"
+$PAD
+Sh "1" C 5 5 0 0 0
+Dr 3.3 0 0
+At STD N 00C0FFFF
+Ne 0 ""
+Po 0 0
+$EndPAD
+$EndMODULE mountinghole
 $EndLIBRARY

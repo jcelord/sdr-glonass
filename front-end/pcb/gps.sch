@@ -9,7 +9,7 @@ $Descr A1 33110 23386
 encoding utf-8
 Sheet 1 1
 Title ""
-Date "28 feb 2015"
+Date "5 mar 2015"
 Rev ""
 Comp ""
 Comment1 ""
@@ -3200,4 +3200,15 @@ Wire Wire Line
 	31350 13800 31350 14850
 Connection ~ 31350 14050
 Connection ~ 31350 14450
+$Comp
+L POWER_GND #?
+U 1 1 54F8853D
+P 15850 17100
+F 0 "#?" V 15800 17050 60  0001 C CNN
+F 1 "POWER_GND" V 15900 17050 60  0001 C CNN
+F 2 "" H 15850 17100 60  0001 C CNN
+F 3 "" H 15850 17100 60  0001 C CNN
+	1    15850 17100
+	1    0    0    -1  
+$EndComp
 $EndSCHEMATC
