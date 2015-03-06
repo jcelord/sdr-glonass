@@ -1,4 +1,4 @@
-PCBNEW-LibModule-V1  Чт. 05 марта 2015 20:05:36
+PCBNEW-LibModule-V1  Пт. 06 марта 2015 15:50:40
 # encoding utf-8
 Units mm
 $INDEX
@@ -416,49 +416,49 @@ Po 5.08 0
 $EndPAD
 $EndMODULE SIP_3_100_70
 $MODULE SMA10137002
-Po 0 0 0 15 54F22564 00000000 ~~
+Po 0 0 0 15 54F9A265 00000000 ~~
 Li SMA10137002
 Sc 0
-AR 
+AR /4B8E474A
 Op 0 0 0
-T0 0 0 1.524 1.524 0 0.3048 N I 21 N "SMA10137002"
-T1 0 0 1.524 1.524 0 0.3048 N I 21 N "VAL**"
+T0 0 0 1.524 1.524 0 0.3048 N I 21 N "XP4"
+T1 0 0 1.524 1.524 0 0.3048 N I 21 N "1575MHz_IN"
 DS 5.3 -5.3 5.3 0 0.15 21
 DS -5.3 -5.3 5.3 -5.3 0.15 21
 DS -5.3 0 -5.3 -5.3 0.15 21
 $PAD
 Sh "2" R 1.5 5 0 0 0
 Dr 0 0 0
-At SMD N 00880001
-Ne 0 ""
+At SMD N 00400001
+Ne 1 "GND"
 Po -4.25 -2.5
 $EndPAD
 $PAD
 Sh "2" R 1.5 5 0 0 0
 Dr 0 0 0
-At SMD N 00880001
-Ne 0 ""
+At SMD N 00400001
+Ne 1 "GND"
 Po 4.25 -2.5
 $EndPAD
 $PAD
 Sh "2" R 1.5 5 0 0 0
 Dr 0 0 0
 At SMD N 00888000
-Ne 0 ""
+Ne 1 "GND"
 Po 4.25 -2.5
 $EndPAD
 $PAD
 Sh "2" R 1.5 5 0 0 0
 Dr 0 0 0
 At SMD N 00888000
-Ne 0 ""
+Ne 1 "GND"
 Po -4.25 -2.5
 $EndPAD
 $PAD
 Sh "1" R 1 5 0 0 0
 Dr 0 0 0
 At SMD N 00888000
-Ne 0 ""
+Ne 2 "N-0000069"
 Po 0 -2.5
 $EndPAD
 $EndMODULE SMA10137002
@@ -493,19 +493,20 @@ Po 0 2.4511
 $EndPAD
 $EndMODULE SMA_EDGE_KHD19A
 $MODULE mountinghole
-Po 0 0 0 15 54F88CDC 00000000 ~~
+Po 0 0 0 15 54F986A6 00000000 ~~
 Li mountinghole
 Sc 0
 AR 
 Op 0 0 0
-T0 0 0 1.524 1.524 0 0.3048 N V 21 N "mountinghole"
-T1 0 0 1.524 1.524 0 0.3048 N V 21 N "VAL**"
+T0 0 0 1.524 1.524 0 0.3048 N I 21 N "mountinghole"
+T1 0 0 1.524 1.524 0 0.3048 N I 21 N "VAL**"
 $PAD
 Sh "1" C 5 5 0 0 0
 Dr 3.3 0 0
 At STD N 00C0FFFF
-Ne 0 ""
+Ne 1 "GND"
 Po 0 0
+.ZoneConnection 2
 $EndPAD
 $EndMODULE mountinghole
 $EndLIBRARY
