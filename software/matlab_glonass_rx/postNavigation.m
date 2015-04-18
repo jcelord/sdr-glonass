@@ -161,11 +161,17 @@ function [navSolutions, eph] = postNavigation(trackResults, settings)
   [satPositions, satVelocities, satAccelerations, satTransmitTime, satClkCorr] = ...
      satposg( (transmitTime-(set_navSolPeriod/1000)), [trkRslt_SVN(activeChnList)], eph );
 
-  eph_taun   = eph.taun;
-  eph_gamman = eph.gamman;
+  eph_taun = {eph(:).taun};
+  emptyIndex = cellfun(@isempty,eph_taun);
+  eph_taun(emptyIndex) = {0};
+  eph_taun = cell2mat(eph_taun);
+  eph_gamman = {eph(:).gamman};
+  emptyIndex = cellfun(@isempty,eph_gamman);
+  eph_gamman(emptyIndex) = {0};
+  eph_gamman = cell2mat(eph_gamman);  
   %More local variables - end
 
-  % Initialization of current measurement ==================================
+   % Initialization of current measurement ==================================
   for currMeasNr = 1:fix((settings.msToProcess - max(stringStart) - settings.skipNumberOfFirstBits) / ... 
                    set_navSolPeriod)
     % Exclude satellites, that are belove elevation mask 
