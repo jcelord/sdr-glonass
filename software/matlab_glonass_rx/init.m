@@ -72,6 +72,6 @@ gnssStart = input('Enter "1" to initiate GNSS processing or "0" to exit : ');
 if (gnssStart == 1)
     disp(' ');
     %start things rolling...
-    postProcessing
+    postProcessing;
 end
 

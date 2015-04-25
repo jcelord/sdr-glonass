@@ -226,7 +226,7 @@ function [navSolutions, eph] = postNavigation(trackResults, settings)
       navSol_dt(currMeasNr) = xyzdt(4);
 
       % Update the satellites elevations vector
-      satElev = navSol_channel_el(:, currMeasNr);
+      satElev = (navSol_channel_el(:, currMeasNr))';
 
       %=== Correct pseudorange measurements for clocks errors ===========
       navSol_channel_corrP(activeChnList, currMeasNr) = ...
@@ -234,7 +234,7 @@ function [navSolutions, eph] = postNavigation(trackResults, settings)
               satClkCorr' * set_c + navSol_dt(currMeasNr);
 
       % Coordinate conversion ==================================================
-
+      
       %=== Convert to geodetic coordinates ==============================
       [navSol_latitude(currMeasNr), ...
        navSol_longitude(currMeasNr), ...

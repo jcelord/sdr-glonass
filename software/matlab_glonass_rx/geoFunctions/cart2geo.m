@@ -35,12 +35,12 @@ function [phi, lambda, h] = cart2geo(X, Y, Z, i)
 
     iterations = iterations + 1;
     if iterations > 100
-      %fprintf('Failed to approximate h with desired precision. h-oldh: %e.\n', h-oldh);
-      printf('Failed to approximate h with desired precision. h-oldh: %e.\n', h-oldh);
+      fprintf('Failed to approximate h with desired precision. h-oldh: %e.\n', h-oldh);
+      %printf('Failed to approximate h with desired precision. h-oldh: %e.\n', h-oldh);
       break;
     end   
   end
-
+  
   phi = phi*180/pi;
   % b = zeros(1,3);
   % b(1,1) = fix(phi);
