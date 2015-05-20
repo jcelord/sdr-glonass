@@ -34,8 +34,8 @@ format ('compact');
 format ('long', 'g');
 
 %--- Include folders with functions ---------------------------------------
-addpath include             % The software receiver functions
-addpath geoFunctions        % Position calculation related functions
+addpath include;             % The software receiver functions
+addpath geoFunctions;        % Position calculation related functions
 
 %% Print startup ==========================================================
 % fprintf(['\n',...

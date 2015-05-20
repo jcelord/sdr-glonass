@@ -42,6 +42,8 @@ function [trackResults, channel]= tracking(fid, channel, settings)
 
 % Initialize result structure ============================================
 
+  textHandle = findobj('Tag','text3');
+
   % Channel status
   trackResults.status         = '-';      % No tracked signal, or lost lock
 
@@ -137,7 +139,7 @@ function [trackResults, channel]= tracking(fid, channel, settings)
   %                                    0.25);
   [k1 k2 k3] = calcFLLPLLLoopCoef(settings.pllNoiseBandwidth, ...
                                settings.fllNoiseBandwidth, PDIcarr);
-  hwb = waitbar(0,'Tracking...');
+%   hwb = waitbar(0,'Tracking...');
 
   %Will we work with I-only data or IQ data.
   if (settings.fileType==1)
@@ -149,6 +151,8 @@ function [trackResults, channel]= tracking(fid, channel, settings)
   % Start processing channels ==============================================
   for channelNr = 1:settings.numberOfChannels
     disp(channelNr);
+    set(textHandle, 'String', strcat('Tracking of channel...', num2str(channel_FCH(channelNr))));
+    drawnow;
     % Only process if SVN is non zero (acquisition was successful)
     if (channel(channelNr).SVN ~= 0)       
       % Save additional information - each channel's tracked SVN
@@ -225,22 +229,6 @@ function [trackResults, channel]= tracking(fid, channel, settings)
       %=== Process the number of specified code periods =================
       for loopCnt =  1:codePeriods
          
-        % GUI update -----------------------------------------------------------
-        % The GUI is updated every 50ms.
-%         if (  (loopCnt-fix(loopCnt/50)*50) == 0  )
-%         %Should be corrected in future! Doesn't work like original version :(
-%           try
-%             wbrMsg = strcat(['Tracking: Ch ' string(channelNr) ' of ' ...
-%                             string(loopCnt_numberOfChannels) '; FCH#' ...
-%                             string(channel(channelNr).FCH)]);
-%             waitbar(loopCnt/codePeriods, wbrMsg, hwb); 
-%           catch
-%             % The progress bar was closed. It is used as a signal
-%             % to stop, "cancel" processing. Exit.
-%             disp('Progress bar closed, exiting...');
-%             return
-%           end
-%         end
 
 % Read next block of data ------------------------------------------------            
         % Find the size of a "block" or code period in whole samples
@@ -271,7 +259,8 @@ function [trackResults, channel]= tracking(fid, channel, settings)
         % If did not read in enough samples, then could be out of 
         % data - better exit 
         if (samplesRead ~= dataAdaptCoeff*blksize)
-          disp('Not able to read the specified number of samples  for tracking, exiting!')
+%           disp('Not able to read the specified number of samples  for tracking, exiting!')
+          h = msgbox('Not able to read the specified number of samples  for tracking, exiting!','Tracking error');
           mclose(fid);
           return
         end
@@ -426,4 +415,5 @@ function [trackResults, channel]= tracking(fid, channel, settings)
 end % for channelNr 
 
 % Close the waitbar
-close(hwb)
+% close(hwb);
+set(textHandle, 'String', 'Tracking is over');

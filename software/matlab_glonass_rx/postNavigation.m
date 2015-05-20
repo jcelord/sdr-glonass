@@ -75,7 +75,8 @@ function [navSolutions, eph] = postNavigation(trackResults, settings)
 
   if (settings.msToProcess < 35000) || (svnCount < 4)
     % Show the error message and exit
-    printf('Record is to short or too few satellites tracked. Exiting!\n');
+    %printf('Record is to short or too few satellites tracked. Exiting!\n');
+    h = msgbox('Record is to short or too few satellites tracked. Exiting!','Tracking error')
     navSolutions = [];
     eph          = [];
     return

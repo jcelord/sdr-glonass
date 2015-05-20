@@ -128,7 +128,7 @@ function settings = initSettings()
   
   %  Plot settings ==========================================================
   %  Enable/disable plotting of the tracking results for each channel
-  settings.plotTracking            = 1;      %  0 - Off
+  settings.plotTracking            = 0;      %  0 - Off
                                              %  1 - On
   
   %  Constants ==============================================================

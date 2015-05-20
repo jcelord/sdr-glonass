@@ -44,7 +44,7 @@ function acqResults = acquisition(longSignal, settings)
 %--------------------------------------------------------------------------
 
 % Initialization =========================================================
-  
+  textHandle = findobj('Tag','text2');  
   % Find number of samples per spreading code
   samplesPerCode = round(settings.samplingFreq / ...
                          (settings.codeFreqBasis / settings.codeLength));
@@ -89,11 +89,13 @@ function acqResults = acquisition(longSignal, settings)
   
   acqResultsIndx = 0; %index varibale for "acqResults"
   
-  fprintf('(');
-  
+%   fprintf('(');
+  set(textHandle, 'String', 'Acq is in progress');
+  drawnow;
   % Perform search for all listed FCH numbers ...
   for FCH = settings.acqFCHList %FCH = frequency channel.
-  
+    set(textHandle, 'String', strcat('Acq of channel...', num2str(FCH)));
+    drawnow;
   % Correlate signals ======================================================   
     %--- Perform DFT of ST code ------------------------------------------
     stCodeFreqDom = conj(fft(stCodesTable(1, :)));
@@ -177,8 +179,8 @@ function acqResults = acquisition(longSignal, settings)
     % If the result is above threshold, then there is a signal ...
     if (peakSize/secondPeakSize) > settings.acqThreshold
       %--- Indicate PRN number of the detected signal -------------------
-      fprintf(num2str(FCH));
-      fprintf(' ');
+%       fprintf(num2str(FCH));
+%       fprintf(' ');
       acqResults.codePhase(acqResultsIndx)   = codePhase;
       acqResults.carrFreq(acqResultsIndx)    =...
                                (settings.IF + FCH*settings.L1_IF_step) - ...
@@ -186,12 +188,9 @@ function acqResults = acquisition(longSignal, settings)
                                (1000 / (2*settings.acqCohIntegration)) *...
                                (frequencyBinIndex - 1);
       acqResults.freqChannel(acqResultsIndx) = FCH;
-    else
-      %--- No signal with this FCH --------------------------------------
-      fprintf('. ');
-    end   % if (peakSize/secondPeakSize) > settings.acqThreshold
-    
+%     else
+%       %--- No signal with this FCH --------------------------------------
+%       fprintf('. ');
+    end   % if (peakSize/secondPeakSize) > settings.acqThreshold    
   end    % for FCH = satelliteList
-
-%=== Acquisition is over ==================================================
-disp(')');
+  set(textHandle, 'String', 'Acq is over');
